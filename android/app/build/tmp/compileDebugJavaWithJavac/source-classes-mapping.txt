@@ -1,0 +1,14 @@
+com/nota10/ReactNativeFlipper.java
+ com.nota10.ReactNativeFlipper
+ com.nota10.ReactNativeFlipper$1
+ com.nota10.ReactNativeFlipper$2
+ com.nota10.ReactNativeFlipper$2$1
+com/nota10/BuildConfig.java
+ com.nota10.BuildConfig
+com/nota10/MainActivity.java
+ com.nota10.MainActivity
+com/nota10/MainApplication.java
+ com.nota10.MainApplication
+ com.nota10.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

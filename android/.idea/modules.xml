@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nota10.iml" filepath="$PROJECT_DIR$/.idea/modules/nota10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/nota10.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/nota10.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/531203759/nota10.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/531203759/nota10.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/37072728/nota10.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/37072728/nota10.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1450451600/nota10.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/-1450451600/nota10.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1054100342/nota10.realm.iml" filepath="$PROJECT_DIR$/.idea/modules/1054100342/nota10.realm.iml" />
+    </modules>
+  </component>
+</project>
