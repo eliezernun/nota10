@@ -13,13 +13,11 @@ const checked = require('../../../img/checked-24.png')
 
 export default function EditarProva({navigation, route}){
     const {id, idpai, nota, grupo, data, titulo, status, color, materia, onGoBack} = route.params;
-
-    console.log(nota)
-    console.log('teste', id, idpai)
+    let name = titulo == 'null' ? 'titulo não informado.': titulo
     let tipoProva = ['N1', 'N2', 'SUB']
     const [Prova, setProva] = useState(grupo)
     const [ERRO, SetERRO] = useState(false)
-    const [Titulo, setTitulo] = useState(titulo)
+    const [Titulo, setTitulo] = useState(name)
     const [MostarData, setMostarData] = useState(false)
     const [date, setDate] = useState(new Date(data))
     const [inputDate, setinputDate] = useState(date.toLocaleDateString('pt-BR'))
@@ -131,9 +129,10 @@ export default function EditarProva({navigation, route}){
             </View>
             <View style={{flex: 1, margin: 10}}>
                 <TextInput 
-                placeholder={titulo}
+                placeholder={name}
+                placeholderTextColor="#222222" 
                 onChangeText={text => setTitulo(text)}
-                style={{backgroundColor: '#ffff', padding: 10, borderRadius: 5 }}/>
+                style={{backgroundColor: '#ffff', padding: 10, borderRadius: 5, color: '#222222' }}/>
 
                 <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 10, backgroundColor: 'rgba(255, 255, 255, 0.3)', borderRadius: 5, padding: 5}}>
                     <Text style={{padding: 10, color: '#ffff', fontSize: 17}}>Dia da prova:</Text>

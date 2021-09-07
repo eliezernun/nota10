@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-export default function Notas(){
+import { View, StyleSheet} from 'react-native';
+import Notas from './lista'
+export default function LNotas({ navigation }){
+    
     return(
         <View style={styles.container}>
             <View style={styles.center}>
-                
+                <Notas navigation={navigation}/>
             </View>
         </View>
     )

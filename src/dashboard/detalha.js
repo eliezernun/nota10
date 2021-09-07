@@ -31,10 +31,10 @@ export default function Detalha({navigation, route}){
     }
 
     const handlerAddProva =()=>{
-        navigation.navigate('Nova Prova', {update, materia, id, color, onGoBack: ()=>{refresh()}})
+        navigation.navigate('Nova Prova', {update, materia, id, color, onGoBack(){refresh()}})
     }
     const handlerAddTrabalho = () =>{
-        navigation.navigate('Novo Trabalho', {update, materia, id, color, onGoBack: ()=>{refreshT()}})
+        navigation.navigate('Novo Trabalho', {update, materia, id, color, onGoBack(){refreshT()}})
     }
     
 
@@ -49,7 +49,7 @@ export default function Detalha({navigation, route}){
                 </View>
 
                 <View style={styles.ProvasC}>
-                    <Provas data={data} navigation={navigation} route={route} color={color} materia={materia} onGoBack={refresh}/>
+                    <Provas data={data} navigation={navigation} route={route} color={color} materia={materia} refresh={refresh}/>
                 </View>
                 <View style={{alignItems: 'stretch'}}>
                     <TouchableOpacity 
@@ -67,7 +67,7 @@ export default function Detalha({navigation, route}){
                     <Text style={styles.title}>Trabalhos:</Text>
                 </View>
                 <View style={styles.ProvasC}>
-                    <Trabalhos data={trabalhos} navigation={navigation}/>
+                    <Trabalhos data={trabalhos} navigation={navigation} route={route} color={color} materia={materia} refreshT={refreshT}/>
                 </View>
                 <View style={{alignItems: 'stretch'}}>
                     <TouchableOpacity 

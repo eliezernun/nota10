@@ -12,7 +12,7 @@ const checked = require('../../../img/checked-24.png')
 //-----------------------------------------------------
 
 export default function AdicionarProva({navigation, route}){
-    let tipoProva = ['N1', 'N2', 'SUB']
+    let tipoProva = ['N1', 'N2', 'SUB', 'Extra N1', 'Extra N2']
     const [Prova, setProva] = useState(null)
     const [ERRO, SetERRO] = useState(false)
     const [Titulo, setTitulo] = useState(null)
@@ -21,24 +21,40 @@ export default function AdicionarProva({navigation, route}){
     const [inputDate, setinputDate] = useState(date.toLocaleDateString('pt-BR'))
     const [Nota, setNota] = useState(0.00)
     const {materia, id, color, onGoBack} = route.params;
-    let hoje;
+    const [Texto, setTexto] = useState('')
+    
 
     const UpdateTipo = (event, item) =>{
         setProva(item)
+        if(item == 'Extra N1'){
+            setTexto(`Você esta adicionando pontos na Média N1`)
+        }else if(item == 'Extra N2'){
+            setTexto(`Você esta adicionando pontos na Média N2`)
+        }
+        else{
+            setTexto('')
+        }
     }
 
     const Tipo = ()=>{
         return(
-            <View style={{padding: 10, flexDirection: 'row', justifyContent: 'space-between', borderWidth: Prova == null && ERRO == true ? 2: 0}}>
-                {
-                    tipoProva.map(item =>(
-                        <TouchableOpacity 
-                        style={{flex: 1, alignItems: 'center', padding: 10, margin: 4, borderRadius: 5, backgroundColor: Prova == item ? '#34d3eb' : '#ffff'}}
-                        key={item} onPress={ (event) => UpdateTipo(event, item)}>
-                            <Image source={Prova == item ? checked : unchecked }/><Text style={{fontWeight:'bold'}}>{item}</Text>
-                        </TouchableOpacity>))
-                }
-            </View>
+            <>
+                <View style={{padding: 10, flexDirection: 'row', justifyContent: 'space-between', borderWidth: Prova == null && ERRO == true ? 2: 0}}>
+                    {
+                        tipoProva.map(item =>(
+                            <TouchableOpacity 
+                            style={{justifyContent: 'center',flex: 1, alignItems: 'center', padding: 10, margin: 4, borderRadius: 5, backgroundColor: Prova == item ? '#34d3eb' : '#ffff'}}
+                            key={item} onPress={ (event) => UpdateTipo(event, item)}>
+                                <Image source={Prova == item ? checked : unchecked }/>
+                                <Text style={{textAlign:'center',fontWeight:'bold'}}>{item}</Text>
+                            </TouchableOpacity>))
+                    }
+                    
+                </View>
+                <View style={{alignItems: 'center'}}>
+                    <Text style={{color: '#ffff', fontSize: 17}}>{Texto}</Text>
+                </View>
+            </>
         )
     }
 
@@ -128,8 +144,9 @@ export default function AdicionarProva({navigation, route}){
             <View style={{flex: 1, margin: 10}}>
                 <TextInput 
                 placeholder="Titulo da prova? (Não obrigatório)." 
+                placeholderTextColor="#222222" 
                 onChangeText={text => setTitulo(text)}
-                style={{backgroundColor: '#ffff', padding: 10, borderRadius: 5 }}/>
+                style={{backgroundColor: '#ffff', padding: 10, borderRadius: 5, color: '#2222'}}/>
 
                 <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 10, backgroundColor: 'rgba(255, 255, 255, 0.3)', borderRadius: 5, padding: 5}}>
                     <Text style={{padding: 10, color: '#ffff', fontSize: 17}}>Dia da prova:</Text>

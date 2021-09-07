@@ -34,13 +34,6 @@ export default function Adicionar({navigation}){
                 diaSemana: String(DiaSemana),
                 color: String(Color),
                 status: false,
-
-                /* id: {type: 'string', indexed: true},
-                    materia: 'string',
-                    rofessor: 'string',
-                    diaSemana: 'string',
-                    color: 'string',
-                    status: 'bool', */
             }
 
             setinfo(data)
@@ -84,7 +77,10 @@ export default function Adicionar({navigation}){
 
 
     }
-
+    
+    const handlerCancel = () =>{
+        navigation.navigate('Dashboard', {update: true})
+    }
 
     const ColorPicker = ()=>{
         return(
@@ -132,13 +128,15 @@ export default function Adicionar({navigation}){
                     <View style={styles.containerIputm}>
                         <TextInput
                             onChangeText={(text)=>{setMateria(text)}}
-                            style={{...styles.input, borderWidth: Error == 'Materia' ? 2 : 0, borderColor: Error == 'Materia' ? '#fc031c': '#222222'}}
+                            style={{...styles.input, color: '#2222', borderWidth: Error == 'Materia' ? 2 : 0, borderColor: Error == 'Materia' ? '#fc031c': '#222222'}}
                             placeholder="Matéria"
+                            placeholderTextColor="#222222" 
                         />
                          <TextInput
                             onChangeText={(text)=>{setProfessor(text)}}
-                            style={{...styles.input, borderWidth: Error == 'Professor' ? 2 : 0, borderColor: Error == 'Professor' ? '#fc031c': '#222222'}}
+                            style={{...styles.input, color: '#2222', borderWidth: Error == 'Professor' ? 2 : 0, borderColor: Error == 'Professor' ? '#fc031c': '#222222'}}
                             placeholder="Professor"
+                            placeholderTextColor="#222222" 
                         />
                         <ColorPicker/>
                         <DiasAulas/>
@@ -153,7 +151,7 @@ export default function Adicionar({navigation}){
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.cancelarBtn}
-                            onPress={handlerSave}
+                            onPress={handlerCancel}
                         >
                             <Text
                             style={styles.buttonText}
@@ -191,6 +189,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch'
     },
     input:{
+        color:'#222222',
         alignSelf: 'stretch',
         backgroundColor: '#ffff',
         borderRadius: 5,

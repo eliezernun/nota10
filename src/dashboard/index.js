@@ -49,7 +49,7 @@ export default function Dashboard({navigation, route}){
             keyExtractor={item => item.id}
             renderItem={({item})=>(<TouchableOpacity
              onPress={(event)=>{handlerDetalha(event, item)}}
-            ><Materias data={item}/></TouchableOpacity>)}
+            ><Materias data={item} update={Jojo}/></TouchableOpacity>)}
             />  
             <TouchableOpacity 
                 onPress={handlerAdd}
@@ -84,6 +84,8 @@ const styles = StyleSheet.create({
         color: '#ffff',
         fontSize: 17,
         fontWeight: 'bold',
-        fontFamily: 'Roboto'
+        fontFamily: 'Roboto',
+        textShadowColor: '#000000',
+        textShadowRadius: 10
     }
 })

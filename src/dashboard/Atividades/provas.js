@@ -2,11 +2,16 @@ import React from 'react';
 import {FlatList, Text, View, TouchableOpacity} from 'react-native';
 import ProvasItens from './provasItens';
 
-export default function Provas({data, navigation, color, materia, onGoBack }){
+export default function Provas({data, navigation, color, materia, refresh}){
+    
   
    const handlerEdit = (event, item) =>{
-       navigation.navigate('Editar Prova', {id: item.id, idpai: item.idDono, nota : item.nota, grupo: item.grupoNota, data: item.data, titulo: item.titulo, status: item.status, color, materia, onGoBack})
+       navigation.navigate('Editar Prova', {id: item.id, idpai: item.idDono, 
+        nota : item.nota, grupo: item.grupoNota, 
+        data: item.data, titulo: item.titulo, status: item.status, color, materia, 
+        onGoBack: () => {refresh()}})
    }
+   
    
 
     if(data.length == 0){
@@ -21,7 +26,7 @@ export default function Provas({data, navigation, color, materia, onGoBack }){
                 keyExtractor={item => item.id}
                 renderItem={({item})=>(<TouchableOpacity
                 onPress={(event)=> handlerEdit(event, item)}
-                ><ProvasItens data={item}/></TouchableOpacity>)}        
+                ><ProvasItens data={item} refresh={refresh}/></TouchableOpacity>)}        
         />
     }
 

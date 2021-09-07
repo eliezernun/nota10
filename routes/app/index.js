@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,6 +11,7 @@ import Detalha from '../../src/dashboard/detalha';
 import Notas from '../../src/notas/index.js';
 import Calendario from '../../src/calendario/index.js';
 import EditarProva from '../../src/dashboard/Atividades/EditarProva.js';
+import EditarTrabalhos from '../../src/dashboard/Trabalhos/EditarTrabalhos.js';
 
 const notaIco = require('../../img/nota.png')
 const notaIcoSelec = require('../../img/nota-selected.png')
@@ -30,11 +31,11 @@ const Home = () =>{
                 initialParams={{ update: null, materia: null }}
             />
             <Dash.Screen name='Nova Prova' component={AdicionarProva}
-            initialParams = {{materia : null, id: null, color: null, onGoBack: null}}/>
+            initialParams = {{materia : null, id: null, color: null, onGoBack: ''}}/>
             <Dash.Screen name='Editar Prova' component={EditarProva}/>
-
+            <Dash.Screen name='Editar Trabalhos' component={EditarTrabalhos}/>
             <Dash.Screen name='Novo Trabalho' component={AdicionarTrabalho} 
-            initialParams = {{materia : null, id: null, color: null, onGoBack: null}}/>
+            initialParams = {{materia : null, id: null, color: null, onGoBack: ''}}/>
             
         </Dash.Navigator>
     )
@@ -45,7 +46,8 @@ const NotasNav = createStackNavigator();
 const SNotas = () =>{
     return(
     <NotasNav.Navigator>
-        <NotasNav.Screen name='Notas' component={Notas}/>
+        <NotasNav.Screen name='Notas' component={Notas}
+        />
     </NotasNav.Navigator>
     )
 }
@@ -63,12 +65,14 @@ const SCalendario = () =>{
 const Tab = createBottomTabNavigator();
 
 export default function App(){
+
+
     return(
         <NavigationContainer
-        initialRouteName="Home"
+        
         >
             <Tab.Navigator
-
+            initialRouteName="Home"
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                   let iconName;

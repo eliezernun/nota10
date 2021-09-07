@@ -12,16 +12,15 @@ const checked = require('../../../img/checked-24.png')
 //-----------------------------------------------------
 
 export default function AdicionarTrabalho({navigation, route}){
-    let tipoTrabalho = ['A1', 'A2', 'A3', 'A4', 'A5','APS']
+    let tipoTrabalho = ['A1', 'A2', 'A3', 'A4','APS', 'Extra']
     const [Trabalho, setTrabalho] = useState(null)
     const [ERRO, SetERRO] = useState(false)
     const [Titulo, setTitulo] = useState(null)
     const [MostarData, setMostarData] = useState(false)
     const [date, setDate] = useState(new Date())
     const [inputDate, setinputDate] = useState(date.toLocaleDateString('pt-BR'))
-    const [Nota, setNota] = useState(0.00)
+    const [Nota, setNota] = useState(0.00000000)
     const {materia, id, color, onGoBack} = route.params;
-    let hoje;
 
     const UpdateTipo = (event, item) =>{
         setTrabalho(item)
@@ -29,7 +28,7 @@ export default function AdicionarTrabalho({navigation, route}){
 
     const Tipo = ()=>{
         return(
-            <View style={{padding: 10, flexDirection: 'row', justifyContent: 'space-between', borderWidth: Trabalho == null && ERRO == true ? 2: 0}}>
+            <View style={{padding: 10, flexDirection: 'row', justifyContent: 'space-around', borderWidth: Trabalho == null && ERRO == true ? 2: 0}}>
                 {
                     tipoTrabalho.map(item =>(
                         <TouchableOpacity 
@@ -62,7 +61,7 @@ export default function AdicionarTrabalho({navigation, route}){
         let dados ={
             id: String(new Date().getTime()),
             idDono: id,
-            titulo: Titulo,
+            titulo: String(Titulo),
             grupoNota: Trabalho,
             nota: Nota,
             data: String(date),
@@ -127,9 +126,10 @@ export default function AdicionarTrabalho({navigation, route}){
             </View>
             <View style={{flex: 1, margin: 10}}>
                 <TextInput 
+                placeholderTextColor="#222222" 
                 placeholder="Titulo da Trabalho? (Não obrigatório)." 
                 onChangeText={text => setTitulo(text)}
-                style={{backgroundColor: '#ffff', padding: 10, borderRadius: 5 }}/>
+                style={{color: '#2222',backgroundColor: '#ffff', padding: 10, borderRadius: 5 }}/>
 
                 <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 10, backgroundColor: 'rgba(255, 255, 255, 0.3)', borderRadius: 5, padding: 5}}>
                     <Text style={{padding: 10, color: '#ffff', fontSize: 17}}>Dia da Trabalho:</Text>
@@ -171,7 +171,7 @@ export default function AdicionarTrabalho({navigation, route}){
                         value={Nota}
                         maximumValue={10.00}
                         minimumValue={0.00}
-                        step={0.01}
+                        step={0.0100000000}
                         onValueChange={(value) => setNota(value)}
                         thumbStyle={{ height: 10, width: 20, backgroundColor: 'transparent' }}
                         trackStyle={{ height: 5 }}

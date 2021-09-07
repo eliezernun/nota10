@@ -6,7 +6,7 @@ export default async function FNAdicionarTrabalhos(info){
      const realm = await getRealm();
 
      realm.write(()=>{
-         realm.create('Trabalhos', info)
+         realm.create('Trabalhos', info, 'modified')
      })
 
      return true
